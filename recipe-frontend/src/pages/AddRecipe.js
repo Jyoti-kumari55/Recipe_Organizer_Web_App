@@ -34,7 +34,7 @@ const AddRecipe = () => {
    }
      console.log(formData);
 
-      const response = await fetch('http://localhost:8081/recipe', {
+      const response = await fetch('https://recipe-backend-azure.vercel.app/recipe', {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

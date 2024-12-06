@@ -6,7 +6,7 @@ import useFetch from "../useFetch";
 
 const RecipeDetail = () => {
   const { recipeId } = useParams();  
-  const { data, loading, error } = useFetch(`http://localhost:8081/recipe/${recipeId}`);
+  const { data, loading, error } = useFetch(`https://recipe-backend-azure.vercel.app/recipe/${recipeId}`);
   console.log("Recipe detail: ", data);
 
   if (loading) {

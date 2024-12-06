@@ -3,7 +3,7 @@ import useFetch from "../useFetch";
 import { Link } from "react-router";
 
 const RecipeList = () => {
-  const { data, loading, error } = useFetch("http://localhost:8081/recipe");
+  const { data, loading, error } = useFetch("https://recipe-backend-azure.vercel.app/recipe");
   // console.log(data);
 
   const [searchRecipe, setSearchRecipe] = useState("");
@@ -14,7 +14,7 @@ const RecipeList = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const deleteHandler = async (recipeId) => {
     try {
-      const response = await fetch(`http://localhost:8081/recipe/${recipeId}`, {
+      const response = await fetch(`https://recipe-backend-azure.vercel.app/recipe/${recipeId}`, {
         method: "DELETE",
       });
       if (!response.ok) {
