@@ -3,7 +3,9 @@ import useFetch from "../useFetch";
 import { Link } from "react-router";
 
 const RecipeList = () => {
-  const { data, loading, error } = useFetch("https://recipe-backend-azure.vercel.app/recipe");
+  const { data, loading, error } = useFetch(
+    "https://recipe-backend-azure.vercel.app/recipe"
+  );
   // console.log(data);
 
   const [searchRecipe, setSearchRecipe] = useState("");
@@ -14,9 +16,12 @@ const RecipeList = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const deleteHandler = async (recipeId) => {
     try {
-      const response = await fetch(`https://recipe-backend-azure.vercel.app/recipe/${recipeId}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://recipe-backend-azure.vercel.app/recipe/${recipeId}`,
+        {
+          method: "DELETE",
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to delete recipe.");
       }
@@ -45,10 +50,11 @@ const RecipeList = () => {
 
       {loading && <p>Loading...</p>}
       {error && <p>An error occurred...</p>}
-      {successMessage &&
-         <div class="alert alert-danger" role="alert">
-            {successMessage}
-          </div>}
+      {successMessage && (
+        <div class="alert alert-danger" role="alert">
+          {successMessage}
+        </div>
+      )}
       <div className="row mt-3">
         {filteredRecipes && filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe) => (
@@ -57,7 +63,7 @@ const RecipeList = () => {
                 <div>
                   <Link>
                     <img
-                      className="card-img-top"
+                      className="card-img-top img-fluid"
                       alt="img"
                       src={recipe.image}
                     />
@@ -88,11 +94,9 @@ const RecipeList = () => {
               </div>
             </div>
           ))
-          
         ) : (
           <p>No Data found.</p>
         )}
-           
       </div>
     </div>
   );
